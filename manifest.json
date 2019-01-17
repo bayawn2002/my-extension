@@ -1,0 +1,22 @@
+{
+ "manifest_version": 2,
+ "name": "TestExt",
+ "description": "",
+ "version": "1",
+ "author": "",
+ "browser_action": {},
+  "background": {
+    "scripts": ["src/js/background.js"]
+  },
+  "content_scripts": [
+        {
+            "matches": [
+                "http://*/*", "https://*/*"
+            ],
+            "css": ["src/build/main.css"],
+            "js": ["src/build/main.js", "src/build/jquery.js"]
+        }
+    ],
+  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'",
+  "permissions": ["activeTab", "webRequest", "webRequestBlocking","identity"]
+}

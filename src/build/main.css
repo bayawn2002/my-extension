@@ -1,0 +1,1 @@
+#chromeExtensionReactApp{position:absolute;right:0;bottom:20px}.main-app{background-color:#000}.main-app-body{width:500px;height:500px;background-color:#ccc}.main-app-body.expanded{max-height:500px;transition:max-height 1s ease-in}.main-app-body.collapsed{max-height:0;transition:max-height 1s ease-out}
