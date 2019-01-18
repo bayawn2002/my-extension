@@ -7,6 +7,7 @@ import '../App.css';
 import { MemoryRouter as Router , Route/*, Redirect, withRouter*/} from 'react-router-dom';
 import Home from './components/pages/Home';
 import Test from './components/pages/Test';
+import Login from './components/pages/Login';
 import Header from './components/common/Header';
 
 class App extends React.Component {
@@ -40,6 +41,8 @@ class App extends React.Component {
 
                 <Route path="/home" component={Home} />
                 <Route path="/test" component={Test} />
+
+                <Route path="/login" component={Login} />
             </div>
           </Router>
         </div>
