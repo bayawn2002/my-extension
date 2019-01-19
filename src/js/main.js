@@ -10,6 +10,8 @@ import Test from './components/pages/Test';
 import Login from './components/pages/Login';
 import Header from './components/common/Header';
 
+import { PrivateRoute }  from './helpers/PrivateRoute';
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -39,9 +41,8 @@ class App extends React.Component {
             <div>
                 <Header/>
 
+                <PrivateRoute exact path='/test' component={Test} />
                 <Route path="/home" component={Home} />
-                <Route path="/test" component={Test} />
-
                 <Route path="/login" component={Login} />
             </div>
           </Router>

@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-//import auth from 'helpers/Auth';
+import auth from '../../helpers/Auth';
 
 function Header(props) {
-  //if(!auth.isAuthenticated())
-  //  return null;
+  if(!auth.isAuthenticated())
+    return null;
 
-  //const logout = () => {
-  //  auth.logout();
+  const logout = () => {
+    auth.logout();
 
-  //  props.history.replace('/login');
-  //}
+    props.history.replace('/login');
+  }
 
   return (
       <div>
@@ -27,7 +27,7 @@ function Header(props) {
           </li>
         </ul>
 
-
+        <button onClick={() => {logout()}}>Log Out</button>
       </div>
   );
 }
