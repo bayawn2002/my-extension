@@ -42,11 +42,11 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
          console.log('isAuthenticated')
          //.log(auth.isAuthenticated())
 
-         async function isAuthenticated(){
-           return await auth.isAuthenticated();
-         }
-         var isAuthenticated = isAuthenticated();
-         return isAuthenticated //localStorage.getItem('authToken') !== null
+         //async function isAuthenticated(){
+        //   return await auth.isAuthenticated();
+         //}
+         //var isAuthenticated = isAuthenticated();
+         return auth.isAuthenticated()//localStorage.getItem('authToken') !== null
          ?  <Component />
          : ( <Redirect to={{
              pathname: '/login',

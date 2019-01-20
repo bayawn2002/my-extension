@@ -2,8 +2,11 @@ import {get} from './Ajax';
 
 class Auth {
   constructor(){
+    this.isLoggedIn = false;
+
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
-    //this.
   }
 
   getAuthToken(){
@@ -19,7 +22,8 @@ class Auth {
   }
 
   isAuthenticated(){
-    return new Promise(function (resolve, reject) {
+    return this.isLoggedIn;
+    /*return new Promise(function (resolve, reject) {
       chrome.storage.sync.get('test-ext', function(data){
         console.log('get')
         console.log(data)
@@ -29,7 +33,7 @@ class Auth {
 
         resolve(isAuthenticated);
       });
-    });
+    });*/
     /*if(localStorage.getItem('authToken') !== null)
       return true;
     else {
@@ -38,6 +42,8 @@ class Auth {
   }
 
   login(username, password){
+    var self = this;
+
     return get(process.env.REACT_APP_API_HOST + ':' + process.env.REACT_APP_API_PORT + '/' + process.env.REACT_APP_API_PATH + 'login?u=' + username + '&p=' + password)
     .then( data => {
       console.log('data');
@@ -45,9 +51,13 @@ class Auth {
       if(typeof data === "undefined" || data.loginFailed)
         return data;
 
+
+
       return new Promise(function (resolve, reject) {
         chrome.storage.sync.set({ 'test-ext' : data.sessionId}, function(){
           console.log('finished');
+          self.isLoggedIn = true;
+
           resolve(data);
         });
       });
@@ -56,11 +66,10 @@ class Auth {
   }
 
   logout(){
+    var self = this;
     chrome.storage.sync.remove('test-ext', function(data){
       console.log('removed');
-      chrome.storage.sync.get('test-ext', function(data){
-        console.log(data);
-      });
+      self.isLoggedIn = false;
     });
     //localStorage.removeItem('authToken');
   }

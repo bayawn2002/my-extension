@@ -4,8 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 import auth from '../../helpers/Auth';
 
 function Header(props) {
-  if(!auth.isAuthenticated())
-    return null;
+  //if(!auth.isAuthenticated())
+  //  return null;
 
   const logout = () => {
     auth.logout();
