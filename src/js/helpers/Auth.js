@@ -22,6 +22,7 @@ class Auth {
   }
 
   isAuthenticated(){
+    console.log(this.isLoggedIn)
     return this.isLoggedIn;
     /*return new Promise(function (resolve, reject) {
       chrome.storage.sync.get('test-ext', function(data){

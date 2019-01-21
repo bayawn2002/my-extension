@@ -6,12 +6,14 @@ import React, { Component } from 'react';
 
 class Test extends Component {
   render() {
+    console.log(this.props)
     return (
       <div className="App">
         <header className="App-header">
 
           <p>
             Test
+            <span>{this.props.showTest}</span>
           </p>
           <a
             className="App-link"

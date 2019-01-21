@@ -41,7 +41,7 @@ class App extends React.Component {
             <div>
                 <Header/>
 
-                <PrivateRoute exact path='/test' component={Test} />
+                <PrivateRoute exact path='/test' component={(props) => <Test {...props} showTest="true" /> } />
                 <Route path="/home" component={Home} />
                 <Route path="/login" component={Login} />
             </div>
